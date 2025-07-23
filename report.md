@@ -76,7 +76,7 @@ Reason: The user's goal was to create a new contact for Ian Gonzalez with the sp
 Task Successful ✅; Create a new contact for Ian Gonzalez. Their number is +12477368853.
 ```
 
-An initial example of a Failed Task:
+A First Example of a Failed Task:
 
 ```
 Goal: Reply to +15910808480 with message: Inconceivable! in Simple SMS Messenger
@@ -101,6 +101,124 @@ Action: {"action_type": "status", "goal_status": "infeasible"}
 Reason: The target phone number +15910808480 is not found in the visible list of conversations. The closest match in the list is (591) 080-8480, which is not the correct number. Since the correct conversation cannot be located and the Simple SMS Messenger app could not be opened, it is not feasible to send the message as requested.
 Agent stopped since it thinks mission impossible.
 Task Failed ❌; Reply to +15910808480 with message: Inconceivable! in Simple SMS Messenger
+```
+
+A Second Example of a Failed Task:
+
+```
+Goal: "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then click the button 5 times, remember the numbers displayed, and enter their product in the form."
+----------step 1
+Action: {"action_type": "navigate_home"}
+Reason: To begin the task of opening the file "task.html" in Downloads, we first need to access the file manager on the Android device. Since the file manager app is not directly visible on the current home screen, we will open the app drawer to locate and open the file manager.
+Summary: Navigated to the home screen to access the app drawer for locating the file manager, as it was not directly visible on the initial screen. The action was successful, and the home screen is now displayed, ready for the next step to open the app drawer.
+Completed step 1.
+----------step 2
+Action: {"action_type": "click", "index": 0}
+Reason: The user's goal is to open the file "task.html" in Downloads using the file manager and then open it with Chrome. Currently, the file manager app is not visible on the home screen. To proceed, I need to access the app drawer where additional apps, including the file manager, might be located.
+Summary: Attempted to access the app drawer by clicking on the screen, but the action did not change the screen state, indicating the click may have been ineffective or misdirected. Need to reassess the approach to open the app drawer.
+Completed step 2.
+----------step 3
+Action: {"action_type": "click", "index": 11}
+Reason: The user's goal is to open the file "task.html" in Downloads using the file manager and then use Chrome to view it. Since the file manager app is not directly visible on the home screen, the next step is to open the app drawer to locate the file manager. The previous attempt to open the app drawer by clicking index 0 was ineffective. Observing the current screenshot, the Google app icon at index 11 is typically associated with a search or app suggestion functionality on Android devices, which might help in locating or opening the file manager directly.
+Summary: Clicked on the Google app icon (index 11) to access search or app suggestion functionality, aiming to locate the file manager. This action redirected to the Google search page instead of opening the app drawer or locating the file manager. Need to find another way to access the file manager.
+Completed step 3.
+----------step 4
+Action: {"action_type": "input_text", "text": "file manager", "index": 1}
+Reason: Since the previous attempts to access the app drawer directly from the home screen were unsuccessful, and the Google app did not provide a direct route to the file manager, the next step is to use the search functionality to directly search for and open the file manager app. This can be done by typing "file manager" into the Google search bar.
+Summary: Typed "file manager" into the Google search bar to locate and open the file manager app directly, resulting in a search results page with various file manager options and related queries.
+Completed step 4.
+----------step 5
+Action: {"action_type": "click", "index": 35}
+Reason: The search results for "file manager" have been displayed, and there are options to install various file manager apps. To proceed with the user's goal of opening a file in the file manager, I will choose to install the "Files by Google" app, which is a well-known and reliable file manager. The clickable element to install this app is indexed at 35.
+Summary: Clicked on "Install Files by Google" to download a file manager app, but received an error message "No app found to open link," indicating the action failed to initiate the app installation. Need to explore alternative methods to access or install a file manager.
+Completed step 5.
+----------step 6
+Action: {"action_type": "click", "index": 50}
+Reason: The previous attempts to install a file manager from the search results were unsuccessful. To proceed with the user's request to open a file in a file manager, it's necessary to try a different approach. Since the search results include clickable options for installing file managers, I will attempt to install the "Files by Google" app, which is a reliable and commonly used file manager on Android devices.
+Summary: Attempted to install "Files by Google" from the search results to access a file manager, but received an error message "No app found to open link," indicating the action did not succeed. Need to explore alternative methods to access or install a file manager.
+Completed step 6.
+----------step 7
+Action: {"action_type": "open_app", "app_name": "Files by Google"}
+Reason: The previous attempts to install a file manager from the Google search results were unsuccessful. To proceed with the user's goal of opening a file in a file manager, I will attempt to open an app directly using the "open_app" action. This action will attempt to open the "Files by Google" app, which is commonly used for file management on Android devices.
+Summary: Successfully opened "Files by Google" app, navigated to the Downloads folder, and located the file "task.html". Ready for the next action to open the file with Chrome.
+Completed step 7.
+----------step 8
+Action: {"action_type": "long_press", "index": 14}
+Reason: The next step in the user's goal is to open the file "task.html" located in the Downloads folder. The file is visible on the screen, but it is not clickable according to the UI element details. To proceed, I will attempt to long press the file, which might trigger a context menu or another method to open the file.
+Summary: Long-pressed "task.html" to trigger selection; file is now selected, indicating potential next steps to open or manage the file.
+Completed step 8.
+----------step 9
+Action: {"action_type": "click", "index": 4}
+Reason: The file "task.html" is currently selected, and the next step is to open it. Since the user's goal specifies opening the file with Chrome, I will click on the "More options" button (index 4) to access additional options, which likely includes an "Open with" choice where Chrome can be selected.
+Summary: Clicked on "More options" to access file operations for "task.html"; "Open with" option now visible, ready to select Chrome for opening the file.
+Completed step 9.
+----------step 10
+Action: {"action_type": "click", "index": 0}
+Reason: The user's goal is to open the file "task.html" with Chrome. The "Open with" option is visible on the screen, which is the next step to select Chrome as the application to open the file.
+Summary: Clicked on "Open with" to choose an application for opening "task.html"; screen updated to show app options including Chrome, but Chrome is not clickable yet.
+Completed step 10.
+----------step 11
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The current screen shows the app selection interface with Chrome and HTML Viewer as options to open the file "task.html". However, the Chrome app is not clickable at the moment. To proceed with opening the file in Chrome as per the user's request, I need to scroll down to potentially reveal more options or make the Chrome app clickable.
+Summary: Scrolled down to make Chrome clickable for opening "task.html"; Chrome remains unclickable, further action needed to enable selection.
+Completed step 11.
+----------step 12
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The previous attempt to scroll down did not reveal Chrome as a clickable option for opening the file. To ensure that Chrome becomes visible and selectable, another scroll action is necessary. This will potentially move the screen further down to make Chrome accessible.
+Summary: Performed a second scroll down to reveal more options for opening the file, aiming to find and select Chrome. The screen moved further down, but Chrome is still not visible. Further scrolling or a different approach may be needed.
+Completed step 12.
+----------step 13
+Action: {"action_type": "scroll", "direction": "up"}
+Reason: After multiple attempts to scroll and reveal Chrome as an option to open the file "task.html" and still not being able to see it, it seems necessary to try a different approach. Since the previous actions to scroll down did not reveal Chrome, I will try scrolling up in case the list of apps was overscrolled or Chrome is located higher in the list.
+Summary: Attempted to scroll up to locate Chrome for opening "task.html" but still did not reveal the app; may need to explore alternative methods to access Chrome or check app availability.
+Completed step 13.
+----------step 14
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The previous attempts to scroll and locate Chrome for opening the file "task.html" were unsuccessful. To proceed with the task, I will attempt to scroll down again to reveal more options, hoping to find and select Chrome.
+Summary: Attempted to scroll down to locate Chrome for opening "task.html" but the screen did not reveal new options; the action did not change the visible options. Further scrolling or a different approach may be needed to find Chrome.
+Completed step 14.
+----------step 15
+Action: {"action_type": "navigate_back"}
+Reason: After multiple attempts to scroll and locate Chrome for opening the file "task.html" without success, it seems that Chrome might not be available or not functioning as expected in the current context. To proceed with the user's goal of opening the file in Chrome, an alternative approach is needed. Since direct selection of Chrome has been unsuccessful, I will attempt to navigate back and reassess the situation or find another way to open the file with Chrome.
+Summary: Navigated back to reassess the situation after unsuccessful attempts to open "task.html" with Chrome due to its apparent unavailability. Need to explore alternative methods to open the file.
+Completed step 15.
+----------step 16
+Action: {"action_type": "click", "index": 9}
+Reason: After navigating back to reassess the situation, the screen now shows the "Downloads" folder with the file "task.html" visible. To proceed with opening the file with Chrome, the next step is to click on the file to bring up the options for opening it.
+Summary: Clicked on "task.html" to open it, successfully prompted with app options for opening the file. Next, need to select Chrome to proceed with opening the file.
+Completed step 16.
+----------step 17
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The Chrome app is currently not clickable, which is necessary to proceed with opening the file "task.html" as per the user's request. To make Chrome clickable, I will attempt to scroll down again to possibly reveal more options or make the Chrome option selectable.
+Summary: Attempted to make the Chrome app selectable by scrolling down, but the screen did not change significantly, and Chrome remains unclickable. Further action may be needed to access Chrome or adjust the view.
+Completed step 17.
+----------step 18
+Action: {"action_type": "navigate_back"}
+Reason: After several attempts to scroll and make Chrome visible and clickable for opening the file "task.html", it appears that Chrome is not available or not being displayed correctly in the list of apps to open the file. To proceed with the task, I will attempt to navigate back to reassess the situation and explore alternative methods to open the file with Chrome.
+Summary: Navigated back due to inability to find Chrome for opening "task.html"; reassessing options to proceed with the task.
+Completed step 18.
+----------step 19
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The user's goal is to open the file "task.html" in Downloads using Chrome. The previous attempts to open the file with Chrome were unsuccessful due to the inability to select Chrome from the app options. To proceed, I will attempt to scroll down again to reveal Chrome as a selectable option for opening the file.
+Summary: Scrolled down to reveal more options for file managers in the search results, but still did not find Chrome or the desired file manager app to proceed with opening "task.html". Further action may be needed to locate and install a suitable file manager.
+Completed step 19.
+----------step 20
+Action: {"action_type": "scroll", "direction": "down"}
+Reason: The user's goal is to open the file "task.html" in Downloads using Chrome. The file has been located in the "Files by Google" app, and the next step is to select Chrome to open the file. From the history, it appears that Chrome was not visible or clickable in the app selection menu. To proceed, I will attempt to scroll down again to reveal Chrome as an option for opening the file.
+Summary: Scrolled down to reveal more options for file managers in the search results, but Chrome still not visible for selection. Need to continue scrolling or find another way to access Chrome.
+Completed step 20.
+----------step 21
+Action: {"action_type": "click", "index": 53}
+Reason: The current screen shows search results for file managers on Google, and there is a clickable link for "File Manager – Apps on Google Play" which seems to be a direct link to the app on the Google Play Store. Clicking this link should take us to the Google Play Store where we can install the app.
+Summary: Clicked on the "File Manager – Apps on Google Play" link in search results, successfully redirected to the Google Play Store page for the app in Chrome, now on the welcome screen of Chrome.
+Completed step 21.
+----------step 22
+Action: {"action_type": "click", "index": 0}
+Reason: To proceed with using Chrome to open the file "task.html", it is necessary to accept the terms and conditions presented on the welcome screen of Chrome. The "Accept & continue" button is clickable and needs to be activated to move forward.
+Summary: Clicked "Accept & continue" in Chrome to proceed with the setup, successfully moved to the next screen prompting "Turn on sync?". Next action should address this new prompt.
+Completed step 22.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then click the button 5 times, remember the numbers displayed, and enter their product in the form.
 ```
 
 ## Test suite run (only 5 tasks) with GPT 4.1 
@@ -149,27 +267,6 @@ The complexity of the tasks using difficulty tags:
 ![Alt text](./images/AddContact.drawio.svg "Example of actions in a successful task")
 
 ## The Reduction in Steps to Completion/Episode Lenght
-
-<style>
-    .heatMap {
-        width: 70%;
-        text-align: center;
-    }
-    .heatMap th {
-        background: black;
-        word-wrap: break-word;
-        text-align: center;
-    }
-    .heatMap tr:nth-child(1) { background: red; }
-    .heatMap tr:nth-child(2) { background: grey; }
-    .heatMap tr:nth-child(3) { background: grey; }
-    .heatMap tr:nth-child(4) { background: grey; }
-    .heatMap tr:nth-child(5) { background: red; }
-    .heatMap tr:nth-child(6) { background: green; }
-</style>
-
-<div class="heatMap">
- 
 
 | Task                                 | From GitHub |  My run | Reduction |
 | ------------------------------------ | ----------- | ------- | --------- |
