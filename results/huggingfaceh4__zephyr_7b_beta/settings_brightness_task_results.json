@@ -1,0 +1,37 @@
+{
+    "success": false,
+    "steps": 5,
+    "reasoning_trace": [
+        {
+            "step": 1,
+            "observation": "Current screen: Settings (id: settings_icon), ",
+            "thought": "",
+            "action": ""
+        },
+        {
+            "step": 2,
+            "observation": "Current screen: Settings (id: settings_icon), ",
+            "thought": "",
+            "action": ""
+        },
+        {
+            "step": 3,
+            "observation": "Current screen: Settings (id: settings_icon), ",
+            "thought": "",
+            "action": ""
+        },
+        {
+            "step": 4,
+            "observation": "Current screen: Settings (id: settings_icon), ",
+            "thought": "",
+            "action": ""
+        },
+        {
+            "step": 5,
+            "observation": "Current screen: Settings (id: settings_icon), ",
+            "thought": "",
+            "action": ""
+        }
+    ],
+    "task_goal": "Navigate to the settings menu and change the brightness"
+}

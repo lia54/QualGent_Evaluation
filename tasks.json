@@ -1,0 +1,49 @@
+{
+    "tasks": [
+        {
+            "id": "settings_brightness_task",
+            "goal": "Navigate to the settings menu and change the brightness",
+            "initial_observation": {"ui_elements": [{"text": "Settings", "resource_id": "settings_icon", "bounds": "..."}]},
+            "optimal_path": [
+                {"action_type": "click", "element_id": "settings_icon"},
+                {"action_type": "click", "element_id": "display_settings"}, 
+                {"action_type": "click", "element_id": "brightness_setting"}
+            ],
+            "final_observation": {"ui_elements": [{"text": "Brightness Adjustment", "resource_id": "brightness_slider", "bounds": "..."}]},
+            "success_condition": "brightness_slider_visible"
+        },
+        {
+            "id": "calculator_multiply_task",
+            "goal": "Open the calculator app and compute 12 * 5",
+            "initial_observation": {"ui_elements": [{"text": "Calculator", "resource_id": "calculator_icon", "bounds": "..."}]},
+            "optimal_path": [
+                {"action_type": "click", "element_id": "calculator_icon"},
+                {"action_type": "click", "element_id": "number_pad_1"},
+                {"action_type": "click", "element_id": "number_pad_2"},
+                {"action_type": "click", "element_id": "multiply_button"},
+                {"action_type": "click", "element_id": "number_pad_5"},
+                {"action_type": "click", "element_id": "equals_button"}
+            ],
+            "final_observation": {"ui_elements": [{"text": "60", "resource_id": "result_display", "bounds": "..."}]},
+            "success_condition": "calculator_result_is_60"
+        },
+        {
+            "id": "shopping_cart_extract",
+            "goal": "Extract the total price from the shopping cart",
+            "initial_observation": {"ui_elements": [{"text": "Your Cart", "resource_id": "cart_title"}, {"text": "Item 1: $10.00", "resource_id": "item1"}, {"text": "Item 2: $15.00", "resource_id": "item2"}, {"text": "Total: $25.00", "resource_id": "total_price"}]},
+            "optimal_path": [],
+            "final_observation": {"ui_elements": [{"text": "Total: $25.00", "resource_id": "total_price"}]},
+            "success_condition": "total_price_extracted"
+        },
+        {
+            "id": "settings_navigation_task",
+            "goal": "Navigate to the settings menu",
+            "initial_observation": {"ui_elements": [{"text": "Home Screen", "resource_id": "home_screen_icon"}]},
+            "optimal_path": [
+                {"action_type": "click", "element_id": "settings_icon"}
+            ],
+            "final_observation": {"ui_elements": [{"text": "Settings", "resource_id": "settings_main_screen"}]},
+            "success_condition": "settings_main_screen_visible"
+        }
+    ]
+}
