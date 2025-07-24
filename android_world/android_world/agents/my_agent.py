@@ -311,8 +311,8 @@ class HFLLMAgent:
         response = self.llm.invoke(prompt) 
         tqdm.write(f"{COLOR_MAGENTA}  [{self.model_name}] LLM invocation completed.{COLOR_RESET}") 
         
-        if 'choices' in response.json:
-            action_output = response.json['choices'][0]['message']['content']
+        if 'choices' in response:
+            action_output = response.split("choices", 1)[1].strip()
         else:
             action_output = response
         
