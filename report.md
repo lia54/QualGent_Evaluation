@@ -377,7 +377,7 @@ Explanation of added models in the simulation framework and my_agent:
 
 The prediction using the models above takes significantly longer (one prediction using `HuggingFaceH4/zephyr-7b-beta` takes 2383.94 seconds more than the GPT 4.1) so I did not run with all of them but the set up is ready to run with them. 
 
-The following table shows the completion time of a prediction for various models:
+The following table shows the completion time of a prediction for various models (Models that are not accessible are marked in the Table with No access):
 
 | Model                              | Completion Time |
 | ---------------------------------- | --------------- |
