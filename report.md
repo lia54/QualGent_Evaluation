@@ -370,13 +370,32 @@ Explanation of added models in the simulation framework and my_agent:
 
 - `stabilityai/stablelm-2-zephyr-1_6b`: This is a very small, 1.6 billion parameter model from Stability AI, trained on 2 trillion tokens. It's designed to be efficient and perform well in resource-constrained environments.
 
+- `distilbert-base-uncased`: DistilBERT is a distilled version of BERT (Bidirectional Encoder Representations from Transformers), meaning it's a smaller, faster version trained to mimic the behavior of the larger BERT model. BERT revolutionized NLP by understanding context from both left-to-right and right-to-left in a sentence. DistilBERT retains about 97% of BERT's performance while being 40% smaller and 60% faster. It is well-suited for tasks like text classification, sentiment analysis, named entity recognition, and question answering.
+
+- `gpt2` : GPT-2 (Generative Pre-trained Transformer 2) is a Transformer architecture, specifically a decoder-only model. It was known for its size (up to 1.5 billion parameters in its largest version) on release.
+
 # Run Analysis 
 
-The prediction using the models above takes significantly longer (one prediction using `HuggingFaceH4/zephyr-7b-beta` takes 2791.9 seconds) than the GPT 4.1 so I did not run with all of them but the set up is ready to run with them. There are more experiments still running.  
+The prediction using the models above takes significantly longer (one prediction using `HuggingFaceH4/zephyr-7b-beta` takes 2791.9 seconds) than the GPT 4.1, so I did not run with all of them but the set up is ready to run with them. There are more experiments still running.
+
+The following table shows the completion time of a prediction for various models:
+
+| Model                              | Completion Time |
+| ---------------------------------- | --------------- |
+| distilbert-base-uncased            | 0.47            |
+| gpt2                               | 10.39           |
+| TinyLlama/TinyLlama-1.1B-Chat-v1.0 | 1.17            |
+| google/gemma-2b-it                 | No access       |
+| HuggingFaceH4/zephyr-7b-beta       | \> 1 min        |
+| stabilityai/stablelm-2-zephyr-1_6b | 48.91           |
+| mistralai/Mistral-7B-v0.1          | No access       |
+| claude-opus-4-20250514             | No access       |
+| microsoft/Phi-3-mini-4k-instruct   | \> 1 min        |
+
+Given the time it takes for each of the model to predict in one step we decided to use for comparison the models that are faster and less than 1 minute. Out of the shorted list the `distilbert-base-uncased` is optimized for classifications and sentiment analysis but not for the text generation. `TinyLlama/TinyLlama-1.1B-Chat-v1.0` model failed to generate meaningful text according with the expected answer. The GPT 2 failed to answer the answer successfully and is a model inferior to GPT 4.1. Lastly, the `stabilityai/stablelm-2-zephyr-1_6b` also failed to answer as expected.
 
 ## Considerations for improvement
 
-- Model agnostic: Run with the remaining LLM models. 
 - Prompt Engineering: Optimize the prompts provided to the LLM for better instruction following and reasoning.
 - Advanced Observation Processing: Experiment with methods like generating summaries, visual grounding, or incorporating historical context to improve the LLM's understanding of the UI.
 - Complex Action Parsing: Support a wider range of Android actions and complex action sequences.

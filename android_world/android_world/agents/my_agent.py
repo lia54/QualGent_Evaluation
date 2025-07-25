@@ -157,7 +157,7 @@ ACTION_SELECTION_PROMPT_TEMPLATE = (
     + GUIDANCE
     + '{additional_guidelines}'
     + '\n\nWhat is the next best action? Respond in the format:,\n'
-    'Reason: ...\nAction: {{"CLICK(Apps)":...}}\n\n'
+    'Reason: ...\nAction: {{"action_type":...}}\n\n'
     'Your Answer:\n'
 )
 
@@ -292,7 +292,7 @@ class HFLLMAgent:
         self.generator = pipeline(
             'text-generation', 
             model=model_name, 
-            max_new_tokens=2000,  
+            max_new_tokens=256,  
             device_map="auto", 
             trust_remote_code=True, 
             **kwargs
@@ -413,7 +413,7 @@ class MyAndroidAgent(base_agent.EnvironmentInteractingAgent):
         action_prompt,
     )
 
-    tqdm.write(f"{COLOR_GREEN}  [{self.model_name}] LLM response {action_output}.{COLOR_RESET}")
+    tqdm.write(f"{COLOR_GREEN}  [{self.llm.model_name}] LLM response {action_output}.{COLOR_RESET}")
     if is_safe == False:  # pylint: disable=singleton-comparison
       #  is_safe could be None
       action_output = f"""Reason: {m3a_utils.TRIGGER_SAFETY_CLASSIFIER}
