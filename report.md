@@ -268,16 +268,15 @@ The complexity of the tasks using difficulty tags:
 
 ## The Reduction in Steps to Completion/Episode Lenght
 
-| Task                                 | From GitHub |  My run | Reduction |
-| ------------------------------------ | ----------- | ------- | --------- |
-| AudioRecorderRecordAudioWithFileName | 12          | 15      | \-3       |
-| BrowserDraw                          | 20          | 20      | 0         |
-| BrowserMaze                          | 20          | 20      | 0         |
-| BrowserMultiply                      | 22          | 22      | 0         |
-| SimpleSmsReply                       | 12          | 5       | 7         |
-| ContactsAddContact                   | 12          | 8       | 4         |
+| Task                                 | Max steps | From GitHub |  My run | Reduction |
+| ------------------------------------ | --------- | ----------- | ------- | --------- |
+| AudioRecorderRecordAudioWithFileName | 20        | 12          | 15      | \-3       |
+| BrowserDraw                          | 20        | 20          | 20      | 0         |
+| BrowserMaze                          | 20        | 20          | 20      | 0         |
+| BrowserMultiply                      | 22        | 22          | 22      | 0         |
+| SimpleSmsReply                       | 12        | 12          | 5       | 7         |
+| ContactsAddContact                   | 12        | 12          | 8       | 4         |
 
-</div>
 
 ## Simulated AndroidWorld benchmark
 

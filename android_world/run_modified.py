@@ -63,9 +63,9 @@ def _find_adb_directory() -> str:
 
 _MODELS = flags.DEFINE_enum(
     'model',
-    'gpt-4-turbo-2024-04-09',
+    'gpt2',
     [
-      "gpt-4-turbo-2024-04-09",
+      "gpt2",
       "HuggingFaceH4/zephyr-7b-beta",
       "mistralai/Mistral-7B-v0.1",
       # Smaller models optimized for local/CPU inference (often available in quantized versions)
@@ -199,6 +199,8 @@ def _get_agent(
   #   agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper('gpt-4-turbo-2024-04-09'), "gpt-4-turbo-2024-04-09")
   elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'HuggingFaceH4/zephyr-7b-beta':
     agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper("HuggingFaceH4/zephyr-7b-beta"), "HuggingFaceH4/zephyr-7b-beta")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'stabilityai/stablelm-2-zephyr-1_6b':
+    agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper("stabilityai/stablelm-2-zephyr-1_6b"), "stabilityai/stablelm-2-zephyr-1_6b")
 
   if not agent:
     raise ValueError(f'Unknown agent: {_AGENT_NAME.value}')

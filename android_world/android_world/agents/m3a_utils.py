@@ -26,6 +26,21 @@ import numpy as np
 
 TRIGGER_SAFETY_CLASSIFIER = 'Triggered LLM safety classifier.'
 
+class CustomEncoder(json.JSONEncoder):
+    def default(self, obj):
+        """Converts unsupported objects to serializable formats for JSON encoding.
+
+        This method handles special cases such as Ellipsis and delegates other types to the superclass.
+        
+        Args:
+            obj: The object to encode.
+
+        Returns:
+            A JSON-serializable representation of the object.
+        """
+        if obj is Ellipsis:
+            return None  # or None, or some string placeholder
+        return super().default(obj)
 
 def _logical_to_physical(
     logical_coordinates: tuple[int, int],
@@ -273,7 +288,8 @@ def parse_reason_action_output(
   if action:
     extracted = extract_json(action)
     if extracted is not None:
-      action = json.dumps(extracted)
+      #action = json.dumps(extracted)
+      action = json.dumps(extracted, cls=CustomEncoder)
 
   return reason, action
 

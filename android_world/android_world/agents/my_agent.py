@@ -18,6 +18,7 @@ from android_world.env import representation_utils
 from langchain_community.llms import HuggingFacePipeline
 from transformers import pipeline
 from tqdm import tqdm 
+import json
 
 # ANSI color codes
 COLOR_RESET = "\033[0m"
@@ -73,10 +74,6 @@ PROMPT_PREFIX = (
     '- Open an app (nothing will happen if the app is not installed):'
     ' `{{"action_type": "open_app", "app_name": <name>}}`\n'
     '- Wait for the screen to update: `{{"action_type": "wait"}}`\n'
-    'When solving the request based on the screen, history and task, first think '
-    ' step-by-step to plan the next action, then generate the action.\n'
-    'Aditionally, explain your thought process before generating an action.\n'
-    'When actions are in the same screen take multiple actions in one step.\n'
 )
 
 GUIDANCE = (
@@ -275,7 +272,7 @@ def _summarize_prompt(
       before_elements=before_elements if before_elements else 'Not available',
       after_elements=after_elements if after_elements else 'Not available',
   )
-
+      
 class HFLLMAgent:
     """
     Loads a HuggingFace text generation model and prepares it for agent inference.
@@ -292,7 +289,7 @@ class HFLLMAgent:
         self.generator = pipeline(
             'text-generation', 
             model=model_name, 
-            max_new_tokens=256,  
+            max_new_tokens=1024,  
             device_map="auto", 
             trust_remote_code=True, 
             **kwargs
@@ -315,8 +312,7 @@ class HFLLMAgent:
             action_output = response.split("choices", 1)[1].strip()
         else:
             action_output = response
-        
-        tqdm.write(f"{COLOR_BLUE}  [{self.model_name}] LLM response {response}.{COLOR_RESET}") 
+         
         return action_output, None, response
         
 
@@ -413,7 +409,7 @@ class MyAndroidAgent(base_agent.EnvironmentInteractingAgent):
         action_prompt,
     )
 
-    tqdm.write(f"{COLOR_GREEN}  [{self.llm.model_name}] LLM response {action_output}.{COLOR_RESET}")
+    #tqdm.write(f"{COLOR_GREEN}  [{self.llm.model_name}] LLM response {action_output}.{COLOR_RESET}")
     if is_safe == False:  # pylint: disable=singleton-comparison
       #  is_safe could be None
       action_output = f"""Reason: {m3a_utils.TRIGGER_SAFETY_CLASSIFIER}
@@ -426,8 +422,8 @@ Action: {{"action_type": "status", "goal_status": "infeasible"}}"""
     step_data['action_raw_response'] = raw_response
 
     reason, action = m3a_utils.parse_reason_action_output(action_output)
-
-
+    
+    tqdm.write(f"{COLOR_GREEN}  [{self.llm.model_name}] LLM action after parsing {action}.{COLOR_RESET}")
     # If the output is not in the right format, add it to step summary which
     # will be passed to next step and return.
     if (not reason) or (not action):
