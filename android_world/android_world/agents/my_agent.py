@@ -289,9 +289,7 @@ class HFLLMAgent:
         self.generator = pipeline(
             'text-generation', 
             model=model_name, 
-            max_new_tokens=1024,  
-            device_map="auto", 
-            trust_remote_code=True, 
+            max_new_tokens=1024,   
             **kwargs
         )
         if self.generator.tokenizer.pad_token is None:
@@ -322,7 +320,6 @@ class MyAndroidAgent(base_agent.EnvironmentInteractingAgent):
   def __init__(
       self,
       env: interface.AsyncEnv,
-      llm: infer.LlmWrapper,
       model_name: str,
       name: str = 'my_agent',
   ):

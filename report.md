@@ -367,6 +367,8 @@ Explanation of added models in the simulation framework and my_agent:
 
 - `TinyLlama/TinyLlama-1.1B-Chat-v1.0`: As the name suggests, TinyLlama is a very small model, ideal for quick testing and situations where minimal memory and computation are paramount. While its performance may not match the larger models, its speed on CPU is a definite advantage. 
 
+- `meta-llama/Llama-3.1-8B-Instruct`: A larger model from LLama use to generate text.
+
 - `stabilityai/stablelm-2-zephyr-1_6b`: This is a very small, 1.6 billion parameter model from Stability AI, trained on 2 trillion tokens. It's designed to be efficient and perform well in resource-constrained environments.
 
 - `distilbert-base-uncased`: DistilBERT is a distilled version of BERT (Bidirectional Encoder Representations from Transformers), meaning it's a smaller, faster version trained to mimic the behavior of the larger BERT model. BERT revolutionized NLP by understanding context from both left-to-right and right-to-left in a sentence. DistilBERT retains about 97% of BERT's performance while being 40% smaller and 60% faster. It is well-suited for tasks like text classification, sentiment analysis, named entity recognition, and question answering.
@@ -384,10 +386,10 @@ The following table shows the completion time of a prediction for various models
 | distilbert-base-uncased            | 0.47            |
 | gpt2                               | 10.39           |
 | TinyLlama/TinyLlama-1.1B-Chat-v1.0 | 1.17            |
-| google/gemma-2b-it                 | No access       |
+| google/gemma-2b-it                 | \> 1 min        |
 | HuggingFaceH4/zephyr-7b-beta       | \> 1 min        |
 | stabilityai/stablelm-2-zephyr-1_6b | 48.91           |
-| mistralai/Mistral-7B-v0.1          | No access       |
+| mistralai/Mistral-7B-v0.1          | \> 1 min        |
 | claude-opus-4-20250514             | No access       |
 | microsoft/Phi-3-mini-4k-instruct   | \> 1 min        |
 

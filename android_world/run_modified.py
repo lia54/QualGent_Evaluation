@@ -72,8 +72,10 @@ _MODELS = flags.DEFINE_enum(
       "microsoft/Phi-3-mini-4k-instruct",  # A strong smaller model from Microsoft
       "google/gemma-2b-it", # Google's efficient Gemma 2B instruction-tuned model
       "TinyLlama/TinyLlama-1.1B-Chat-v1.0", # A very small model for fast iteration
+      "meta-llama/Llama-3.1-8B-Instruct",
       # You might need to add other models based on specific needs or latest releases
       "stabilityai/stablelm-2-zephyr-1_6b", #or other community fine-tunes
+      "distilbert-base-uncased",
     ],
     'Models to compare.',
 )
@@ -198,10 +200,24 @@ def _get_agent(
   # elif _AGENT_NAME.value == 'my_agent':
   #   agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper('gpt-4-turbo-2024-04-09'), "gpt-4-turbo-2024-04-09")
   elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'HuggingFaceH4/zephyr-7b-beta':
-    agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper("HuggingFaceH4/zephyr-7b-beta"), "HuggingFaceH4/zephyr-7b-beta")
+    agent = my_agent.MyAndroidAgent(env, "HuggingFaceH4/zephyr-7b-beta")
   elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'stabilityai/stablelm-2-zephyr-1_6b':
-    agent = my_agent.MyAndroidAgent(env, infer.Gpt4Wrapper("stabilityai/stablelm-2-zephyr-1_6b"), "stabilityai/stablelm-2-zephyr-1_6b")
-
+    agent = my_agent.MyAndroidAgent(env, "stabilityai/stablelm-2-zephyr-1_6b")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'gpt2':
+    agent = my_agent.MyAndroidAgent(env, "gpt2")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'mistralai/Mistral-7B-v0.1':
+    agent = my_agent.MyAndroidAgent(env, "mistralai/Mistral-7B-v0.1")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'microsoft/Phi-3-mini-4k-instruct':
+    agent = my_agent.MyAndroidAgent(env, "microsoft/Phi-3-mini-4k-instruct")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'google/gemma-2b-it':
+    agent = my_agent.MyAndroidAgent(env, "google/gemma-2b-it")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'TinyLlama/TinyLlama-1.1B-Chat-v1.0':
+    agent = my_agent.MyAndroidAgent(env, "TinyLlama/TinyLlama-1.1B-Chat-v1.0")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'meta-llama/Llama-3.1-8B-Instruct':
+    agent = my_agent.MyAndroidAgent(env, "meta-llama/Llama-3.1-8B-Instruct")
+  elif _AGENT_NAME.value == 'my_agent' and _MODELS.value == 'distilbert-base-uncased':
+    agent = my_agent.MyAndroidAgent(env, "distilbert-base-uncased")
+      
   if not agent:
     raise ValueError(f'Unknown agent: {_AGENT_NAME.value}')
 
